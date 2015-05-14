@@ -1,0 +1,21 @@
+
+
+<div data-ng-app="" data-ng-init="names=['Jani','Hege','Kai']">
+  <p>Looping with ng-repeat:</p>
+  <ul>
+    <li data-ng-repeat="x in names">
+      {{ x }}
+    </li>
+      </ul>
+  First Name: <input type="text"  ng-model="firstName"><br/>
+Last Name: <input type="text" ng-model="lastName"><br/>
+<br>
+Full Name: {{firstName + " " + lastName}}
+      <button ng-click="onButton1Click()" class="btn1">Click Me</button>
+      
+
+</div>
+
+   
+
+

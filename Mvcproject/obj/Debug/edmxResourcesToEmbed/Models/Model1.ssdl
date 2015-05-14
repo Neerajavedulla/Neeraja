@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TelerikORMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TelerikORMModelStoreContainer">
+    <EntitySet Name="customer" EntityType="TelerikORMModel.Store.customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employee" EntityType="TelerikORMModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="TelerikORMModel.Store.Product" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__customer__Produc__08EA5793" Association="TelerikORMModel.Store.FK__customer__Produc__08EA5793">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="30" />
+    <Property Name="LastName" Type="varchar" MaxLength="30" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="40" />
+    <Property Name="PhoneNumber" Type="int" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="20" />
+    <Property Name="State" Type="varchar" MaxLength="30" />
+    <Property Name="ZipCode" Type="int" />
+    <Property Name="ProductID" Type="int" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="int" Nullable="false" />
+    <Property Name="EmpName" Type="varchar(max)" />
+    <Property Name="Location" Type="varchar" MaxLength="30" />
+    <Property Name="Salary" Type="int" />
+    <Property Name="Department" Type="varchar" MaxLength="20" />
+    <Property Name="Pasword" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="30" />
+    <Property Name="Color" Type="varchar" MaxLength="20" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Product_Description" Type="varchar" MaxLength="50" />
+    <Property Name="UnitPrice" Type="int" />
+    <Property Name="Size" Type="char" MaxLength="1" />
+  </EntityType>
+  <Association Name="FK__customer__Produc__08EA5793">
+    <End Role="Product" Type="TelerikORMModel.Store.Product" Multiplicity="0..1" />
+    <End Role="customer" Type="TelerikORMModel.Store.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
